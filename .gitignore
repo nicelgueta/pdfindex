@@ -1,0 +1,9 @@
+*cache/
+*.pdf
+
+build/
+
+*.txt
+
+*.pyd
+*.obj
