@@ -31,6 +31,7 @@ def main(pdfpath: str, output_file_name: str = "output"):
                     sub = sub[ii+len(word):]
 
     ms = ""
+    print("Found word indexes:\n_________")
     for w,index_dict in word_map.items():
         print(f"{w}: {list(index_dict.keys())}")
         txt = f"""
@@ -47,3 +48,16 @@ def main(pdfpath: str, output_file_name: str = "output"):
     with open(f"{output_file_name}.txt","ab") as f:
         f.write(bytes(ms, encoding="utf-8"))
 
+if __name__ == "__main__":
+    import sys
+    if len(sys.argv) == 1:
+        print("Needs path to pdf file")
+        sys.exit(1)
+    elif len(sys.argv) == 2:
+        pdfpath = sys.argv[1]
+        outputfile = "output"
+    else:
+        pdfpath = sys.argv[1]
+        outputfile = sys.argv[2]
+
+    main(pdfpath=pdfpath, output_file_name=outputfile)
